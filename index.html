@@ -1,12 +1,72 @@
+<!--
+    EECS 330 Human-Computer Interaction (winter 2011)
+    Intro to HTML5
+    Sample Template
+-->
 <!DOCTYPE html>
-
 <html>
 <head>
-<title>Waves</title>
-<link rel="stylesheet" href="default.css">
-<script type="text/javascript" src="main.js"></script>
+    
+    <!-- Title of your app -->
+    <title>Save the Bubble</title>
+    
+    <!-- Allow application to start in standalone mode -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- Don't allow user scaling of the page -->
+    <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; user-scalable=no">
+        
+    <!-- Add a custom home screen icon -->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        
+    <!-- Add a spashscreen in standalone mode -->
+    <link rel="apple-touch-startup-image" href="splashscreen.png">
+        
+    <!-- Attach a stylesheet -->
+    <link rel="stylesheet" href="default.css">
+        
+    <!-- Attach a JavaScript file -->
+    <script type="text/javascript" src="main.js"></script>
+
 </head>
-<body onload="setup();">
-<canvas id="world">Browser does not support HTML5</canvas>
+        
+
+<body>
+    
+<!-- page header -->
+
+<div id="wrapper">
+
+<header>
+    
+     <!-- logo -->
+    <img src="title.png" width="600" height="100" alt="Save the Bubble">
+        
+</header>
+
+<!-- left nav items -->
+<nav>
+    <!-- UL stands for unordered list -->
+    <ul>
+        <!-- LI stands for list item -->
+        <li><a href="index.html">My Events</a></li>
+        <li><a href="index.html">Add Event</a></li>
+    </ul>
+</nav>
+
+<!-- HTML5 article tag -->    
+<article>
+    <div style="width:600px;height:600px;border:1px solid #000;">
+	<p> YO </p>
+	</div>
+</article>
+
+
+<!-- Copyright footer -->
+<footer>
+    eecs330 Human-Computer Interaction
+</footer>
+</div>
+
 </body>
 </html>

@@ -1,5 +1,75 @@
-body.canvas {
-	margin: 0 px;
-		padding: 0 px;
-		}
-		
+body {
+	background-color: #7aabab;
+	font-family: Arial, Helvetica, sans-serif; 
+	font-size: 14px;
+	color: DimGrey;
+}
+
+#wrapper {
+	width: 1024px;
+	height: 780px;
+	margin: 20px auto;
+}
+
+header {
+	display: block;
+	left: 50%;
+}
+
+footer {
+	display: block;
+	clear: both;
+	text-align: center;
+	border-top: 1px solid gray;
+	padding: 10px;
+	width: 600px;
+}
+
+nav {
+	display: block;
+	float: right;
+	position: relative;
+	width: 180px;
+}
+
+article {
+	float: left;
+	width: 800px;
+}
+
+li {
+	padding-left: 20px;
+	margin-bottom: 10px;
+}
+
+h1 {
+	font-weight: normal;
+	color: indigo;
+	text-shadow: white 0px 1px 2px;
+}
+
+
+nav ul {
+	margin: 0px;
+	padding: 20px 20px 0 0;
+}
+
+nav li {
+	font-weight: bold;
+	background: blue;
+   border-radius: 20px;
+	margin: 9px 0 400px 0;
+	list-style-type: none;
+	padding: 9px;
+	text-align:center
+}
+
+nav li a {
+	color: white;
+}
+
+a:link    { text-decoration: none; }
+a:hover   { text-decoration: underline; }
+a:active  { text-decoration: underline; }
+a:visited {	text-decoration: none; }
+
