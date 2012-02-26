@@ -1,39 +1,33 @@
-<!--
-    EECS 330 Human-Computer Interaction (winter 2011)
-    Intro to HTML5
-    Sample Template
--->
 <!DOCTYPE html>
 <html>
 <head>
-    
-    <!-- Title of your app -->
-    <title>Save the Bubble</title>
-    
-    <!-- Allow application to start in standalone mode -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <!-- Don't allow user scaling of the page -->
-    <meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; user-scalable=no">
-        
-    <!-- Add a custom home screen icon -->
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-        
-    <!-- Add a spashscreen in standalone mode -->
-    <link rel="apple-touch-startup-image" href="splashscreen.png">
-        
-    <!-- Attach a stylesheet -->
-    <link rel="stylesheet" href="default.css">
-        
-    <!-- Attach a JavaScript file -->
-    <script type="text/javascript" src="main.js"></script>
-
+	<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; user-scalable=no">
+	<link rel="stylesheet" href="string.css">
 </head>
-        
-
-<body>
-    
-<!-- page header -->
+<body> 
+<div id="tambo-wrapper">
+<input type="radio" name="tambo" id="tambo1" checked="checked">
+<input type="radio" name="tambo" id="tambo2">
+<input type="radio" name="tambo" id="tambo3">
+<input type="radio" name="tambo" id="tambo4">
+<input type="radio" name="tambo" id="tambo5">
+<input type="radio" name="tambo" id="tambo6">
+<label for="tambo1" class="tambo1"></label>
+<label for="tambo2" class="tambo2"></label>
+<label for="tambo3" class="tambo3"></label>
+<label for="tambo4" class="tambo4"></label>
+<label for="tambo5" class="tambo5"></label>
+<label for="tambo6" class="tambo6"></label>
+<div class="tambo">
+  <ul class="tambo-container">
+      <li title="tambo2"><a href="index.html">Sports Bubbles</a> </li>
+      <li title="sub-title"><a href="index.html">Academic Bubbles</a> </li>
+      <li title="sub-title"><img src="http://de.flash-screen.com/free-wallpaper/uploads/200708/imgs/1187189697_1024x768_cartoon-tiger-picture.jpg"/> </li>
+      <li title="sub-title"><img src="http://www.deshow.net/d/file/cartoon/2009-03/games-fun-cartoon-illustrations-2-439-2.jpg"/> </li>
+      <li title="sub-title"><img src="http://www.hdcartoonwallpaper.com/wp-content/uploads/2011/08/Ice_Age_Cartoon_Wallpaper.jpg" /> </li>
+      <li title="sub-title"><img src="http://www.sriramatrix.com/gal3d/2008/tmnt3dc.jpg" /> </li>
+  </ul>
+</div>
 
 <div id="wrapper">
 
@@ -67,6 +61,5 @@
     eecs330 Human-Computer Interaction
 </footer>
 </div>
-
 </body>
 </html>
