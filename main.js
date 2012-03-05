@@ -87,7 +87,6 @@ function redraw() {
 	for (var i in currentBubbles) {
 		bubble = new Bubble(currentBubbles[i].x, currentBubbles[i].y);
 		bubble.draw(context);
-		alert(i);
 		currentBubbles2.push(bubble);
 	}
 	
