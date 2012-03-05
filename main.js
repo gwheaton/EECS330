@@ -8,6 +8,8 @@ function Bubble(x, y) {
 	
 	this.draw = function(context) {		
 		
+			context.save();
+			
 			if (!this.enlarged) {
 				context.fillStyle = "rgba(0,100,180,0.5)";
 				context.beginPath();			
@@ -22,6 +24,8 @@ function Bubble(x, y) {
 				context.closePath();
 				context.fill();
 			}
+			
+			context.restore();
 	}
 }
 	
@@ -80,9 +84,13 @@ function distBetweenPoints(x1, y1, x2, y2)
 
 function redraw() {
 // redraw the canvas bubbles
-	canvas.width = canvas.width;
+
+	var canvas = document.getElementById("canvas");
+	var context = canvas.getContext('2d');
 	
-	for (i in currentBubbles) {
+	context.clearRect(0, 0, canvas.width, canvas.height);
+	
+	for (var i in currentBubbles) {
 		currentBubbles[i].draw(context);
 	}
 }
@@ -119,7 +127,7 @@ function setup() {
 			bubble = new Bubble(x, y)
 			bubble.draw(context);
 			
-			element.write(currentBubbles.push(bubble));
+			currentBubbles.push(bubble);
 		}
 	}
 }
