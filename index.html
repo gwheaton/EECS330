@@ -1,65 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; user-scalable=no">
-	<link rel="stylesheet" href="string.css">
+	<title>Save the Bubble!</title>
+	<link rel="stylesheet" href="default.css">
+	<script type="text/javascript" src="main.js"></script>	
 </head>
-<body> 
-<div id="tambo-wrapper">
-<input type="radio" name="tambo" id="tambo1" checked="checked">
-<input type="radio" name="tambo" id="tambo2">
-<input type="radio" name="tambo" id="tambo3">
-<input type="radio" name="tambo" id="tambo4">
-<input type="radio" name="tambo" id="tambo5">
-<input type="radio" name="tambo" id="tambo6">
-<label for="tambo1" class="tambo1"></label>
-<label for="tambo2" class="tambo2"></label>
-<label for="tambo3" class="tambo3"></label>
-<label for="tambo4" class="tambo4"></label>
-<label for="tambo5" class="tambo5"></label>
-<label for="tambo6" class="tambo6"></label>
-<div class="tambo">
-  <ul class="tambo-container">
-      <li title="tambo2"><a href="index.html">Sports Bubbles</a> </li>
-      <li title="sub-title"><a href="index.html">Academic Bubbles</a> </li>
-      <li title="sub-title"><img src="http://de.flash-screen.com/free-wallpaper/uploads/200708/imgs/1187189697_1024x768_cartoon-tiger-picture.jpg"/> </li>
-      <li title="sub-title"><img src="http://www.deshow.net/d/file/cartoon/2009-03/games-fun-cartoon-illustrations-2-439-2.jpg"/> </li>
-      <li title="sub-title"><img src="http://www.hdcartoonwallpaper.com/wp-content/uploads/2011/08/Ice_Age_Cartoon_Wallpaper.jpg" /> </li>
-      <li title="sub-title"><img src="http://www.sriramatrix.com/gal3d/2008/tmnt3dc.jpg" /> </li>
-  </ul>
-</div>
 
+<body>
 <div id="wrapper">
-
 <header>
     
      <!-- logo -->
-    <img src="title.png" width="600" height="100" alt="Save the Bubble">
+    <img src="Stb_Logo.png" width="600" height="100" alt="Save the Bubble">
         
 </header>
+
 
 <!-- left nav items -->
 <nav>
     <!-- UL stands for unordered list -->
     <ul>
-        <!-- LI stands for list item -->
-        <li><a href="index.html">My Events</a></li>
-        <li><a href="index.html">Add Event</a></li>
+	<button type="button" onclick="setup();">Click Me!</button>
     </ul>
 </nav>
 
 <!-- HTML5 article tag -->    
 <article>
-    <div style="width:600px;height:600px;border:1px solid #000;">
-	<p> YO </p>
+    <div style="width:600px;height:800px;border:1px solid #000;">
+	<canvas id="canvas" height="800" width="600"></canvas>
 	</div>
 </article>
-
-
-<!-- Copyright footer -->
-<footer>
-    eecs330 Human-Computer Interaction
-</footer>
 </div>
 </body>
 </html>

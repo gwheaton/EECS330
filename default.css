@@ -8,7 +8,9 @@ body {
 #wrapper {
 	width: 1024px;
 	height: 780px;
-	margin: 20px auto;
+	display: block;
+	margin: 0 auto;
+	
 }
 
 header {
