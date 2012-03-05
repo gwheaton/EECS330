@@ -81,16 +81,10 @@ function distBetweenPoints(x1, y1, x2, y2)
 function redraw() {
 // redraw the canvas bubbles
 	canvas.width = canvas.width;
-	currentBubbles2 = new Array();
-	var bubble;
 	
-	for (var i in currentBubbles) {
-		bubble = new Bubble(currentBubbles[i].x, currentBubbles[i].y);
-		bubble.draw(context);
-		currentBubbles2.push(bubble);
+	for (i in currentBubbles) {
+		currentBubbles[i].draw(context);
 	}
-	
-	currentBubbles = currentBubbles2;
 }
 		
 function setup() {
@@ -105,8 +99,24 @@ function setup() {
 		
 		if (context) {
 		
-			var bubble = new Bubble(Math.random()*600, Math.random()*600);
-	
+			var bubble;
+			var x;
+			var y;
+			var cont;
+			
+			do {
+				x = Math.random()*500 + 50;
+				y = Math.random()*650 + 50;
+				cont = true;
+				
+				for (i in currentBubbles) {
+					if (distBetweenPoints(x, y, currentBubbles[i].x, currentBubbles[i].y) < 70) {
+						cont= false;
+					}
+				}
+			} while (!cont);
+				
+			bubble = new Bubble(x, y)
 			bubble.draw(context);
 			
 			element.write(currentBubbles.push(bubble));
