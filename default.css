@@ -13,6 +13,15 @@ body {
 	
 }
 
+#pform {
+position:absolute;
+top:100px;
+left:100px;
+display:none;
+border:2px solid blue;
+padding:8px;
+}
+
 header {
 	display: block;
 	left: 50%;

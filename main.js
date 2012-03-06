@@ -1,5 +1,6 @@
 var context;
 var currentBubbles = new Array();
+(document.getElementById( 'pForm' )).style.display = 'none';
 
 function Bubble(x, y) {
 	this.x = x;      // x coordinate
@@ -130,4 +131,31 @@ function setup() {
 			currentBubbles.push(bubble);
 		}
 	}
+}
+
+function initprompt() {
+var pf = document.getElementById( 'pForm' );
+pf.style.display = 'none';
+}
+	
+function prompt() {
+// get field to be validated
+var pf = document.getElementById( 'pForm' );
+pf.style.display = 'block';
+}
+
+function getPdata( arg ) {
+var f = document.getElementById( 'pForm' );
+if ( 'cancel' == arg ) {
+f.style.display = 'none';	// hide form
+return;	// exit immediately
+}
+
+else {
+var n = f.event.value;
+var a = f.date.value;
+var t = f.time.value;
+f.style.display = 'none';	// hide form
+alert( 'event: ' + n + '\n date: ' + a + '\n time: ' + t);
+}
 }

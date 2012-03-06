@@ -6,13 +6,13 @@
 	<script type="text/javascript" src="main.js"></script>	
 </head>
 
-<body>
+<body onLoad="initprompt();">
 <div id="wrapper">
 <header>
     
      <!-- logo -->
     <img src="Stb_Logo.png" width="600" height="100" alt="Save the Bubble">
-        
+
 </header>
 
 
@@ -21,8 +21,19 @@
     <!-- UL stands for unordered list -->
     <ul>
 	<button type="button" onclick="setup();">Click Me!</button>
+	<form>
+		<input type="button" value="Add a Bubble" onclick="prompt()" />
+	</form>
+		<form id="pForm">
+		Event: <input type="text" name="event" /><br><br>
+		Date: <input type="text" name="date" /><br><br>
+		Time: <input type="text" name="time" /><br><br>
+		<input type="button" value="Submit" onclick="getPdata()" />
+		<input type="button" value="Cancel" onclick="getPdata( this.value )" />
+		</form>
     </ul>
 </nav>
+
 
 <!-- HTML5 article tag -->    
 <article>
@@ -30,6 +41,9 @@
 	<canvas id="canvas" height="800" width="600"></canvas>
 	</div>
 </article>
+
+
 </div>
+
 </body>
 </html>
