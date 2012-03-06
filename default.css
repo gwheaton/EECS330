@@ -13,6 +13,11 @@ body {
 	
 }
 
+#description {
+	width: 400px;
+	resize: none;
+	}
+
 #pform {
 position:absolute;
 top:100px;

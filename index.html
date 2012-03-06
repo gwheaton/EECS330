@@ -25,9 +25,11 @@
 		<input type="button" value="Add a Bubble" onclick="prompt()" />
 	</form>
 		<form id="pForm">
-		Event: <input type="text" name="event" /><br><br>
-		Date: <input type="text" name="date" /><br><br>
-		Time: <input type="text" name="time" /><br><br>
+		Event: <input type="text" name="event" size="35" placeholder="Enter your event" /><br><br>
+		Date: <input type="text" name="date" maxlength="8" placeholder="##/##/##" /><br><br>
+		Time: <input type="text" name="time" maxlength="10" placeholder="ex: 12:00 P.M." /><br><br>
+		Description: <textarea rows="10" columns="300" placeholder="Enter a description of your event" id="description"></textarea><br><br>
+		Will food be provided?:<input type="checkbox" name="food" /> <br><br>
 		<input type="button" value="Submit" onclick="getPdata()" />
 		<input type="button" value="Cancel" onclick="initprompt()" />
 		</form>
