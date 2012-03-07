@@ -261,28 +261,42 @@ function setupByCategory(eventInfo, element) {
 	
 
 function initprompt() {
-var pf = document.getElementById( 'pForm' );
-pf.style.display = 'none';
+	var pf = document.getElementById( 'pForm' );
+	pf.style.display = 'none';
 }
 	
 function prompt() {
-// get field to be validated
-var pf = document.getElementById( 'pForm' );
-pf.style.display = 'block';
+	// get field to be validated
+	var pf = document.getElementById( 'pForm' );
+	pf.style.display = 'block';
 }
 
 function getPdata( arg ) {
-var f = document.getElementById( 'pForm' );
-if ( 'cancel' == arg ) {
-f.style.display = 'none';	// hide form
-return;	// exit immediately
-}
+	var f = document.getElementById( 'pForm' );
+	if ( 'cancel' == arg ) {
+		f.style.display = 'none';	// hide form
+		return;	// exit immediately
+	}
 
-else {
-var n = f.event.value;
-var a = f.date.value;
-var t = f.time.value;
-f.style.display = 'none';	// hide form
-alert( 'event: ' + n + '\n date: ' + a + '\n time: ' + t);
-}
+	else {
+		var n = f.event.value;
+		var a = f.date.value;
+		var t = f.time.value;
+		var d = f.script.value;
+		var food = f.food.checked;
+		var category = "category1"; // need to fix this
+		
+		f.style.display = 'none';	// hide form
+
+		var newEvent = new Event(n, a, t, d, food);
+		// use category selected to put into a category's event list
+		switch (category) {	
+				case "category1":
+					eventInfo1.push(newEvent);
+					break;
+				default: alert("error");
+		}
+
+		setup(category); // redraw window with new event
+	}
 }
