@@ -11,8 +11,12 @@ var interactiveMode = true;
 var enlargedBubble;
 
 // radius for bubbles
-var smallRad = 40;
-var largeRad = 80;
+var smallRad = 60;
+var largeRad = 290;
+
+// coords for middle of canvas
+var xmid = 300;
+var ymid = 400;
 
 
 (document.getElementById( 'pForm' )).style.display = 'none';
@@ -37,7 +41,7 @@ function Bubble(x, y, event) {
 			else {
 				context.fillStyle = "rgba(0,100,180,0.5)";
 				context.beginPath();			
-				context.arc(this.x, this.y, largeRad, 0, Math.PI*2, true);
+				context.arc(xmid, ymid, largeRad, 0, Math.PI*2, true);
 				context.closePath();
 				context.fill();
 			}
@@ -87,7 +91,7 @@ function mouseDown(e)
 	else { // we have an enlarged bubble, if we click outside it return it to normal and reenter interactive mode
 		var bubble = enlargedBubble; // grab our global
 		
-		if (withinBubble(bubble, x, y, interactiveMode)) {
+		if ( withinBubble(bubble, x, y, interactiveMode) ) {
 			// do nothing yet
 		}
 		else {
@@ -122,18 +126,19 @@ function withinBubble(bubble, x, y, mode)
 	var rad;
 	
 	if (mode)  { // small bubble
-		rad = smallRad;
+		
+		if ( distBetweenPoints(x, y, bubble.x, bubble.y) <= smallRad ) {
+			return true;
+		}
 	}
 	else { // larger
-		rad = largeRad;
+	
+		if ( distBetweenPoints(x, y, xmid, ymid) <= largeRad ) {
+			return true;
+		}			
 	}
 	
-	if ( distBetweenPoints(x, y, bubble.x, bubble.y) <= rad ) {
-		return true;
-	}
-	else {
-		return false;
-	}
+	return false;
 }
 	
 
