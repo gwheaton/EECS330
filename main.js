@@ -58,13 +58,27 @@ function Bubble(x, y, event) {
 				
 			}
 			else {
-				context.fillStyle = "rgba(0,100,180,0.8)";
+				context.fillStyle = "rgba(0,100,180,1)";
 				context.beginPath();			
 				context.arc(xmid, ymid, largeRad, 0, Math.PI*2, true);
 				context.closePath();
 				context.fill();
 				
 				// fill in the info for the event
+				context.fillStyle = "rgba(255, 255, 255, 1)";
+				context.textBaseline = "middle";
+				context.textAlign = "center";
+				context.font = "14px arial, sans-serif";
+				context.fillText(this.event.name.substr(0,15), xmid, ymid-200);
+				context.fillText("Date:", xmid-120, ymid-150);
+				context.fillText(this.event.date.substr(0,15), xmid-50, ymid-150);
+				context.fillText("Time:", xmid+50, ymid-150);
+				context.fillText(this.event.time.substr(0,15), xmid+120, ymid-150);
+				context.fillText("Description:", xmid, ymid-100);
+				context.fillText(this.event.descrip.substr(0,15), xmid, ymid-50);
+				if (this.event.food) {
+					context.fillText("*Food will be provided", xmid-100, ymid+150);
+					}
 				
 			}
 			
