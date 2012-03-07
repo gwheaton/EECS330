@@ -10,7 +10,7 @@ var event1 = new Event("github training", "03/06/12", "12:00 PM", "learn github 
 var event2 = new Event("blah", "03/07/12", "1:00 PM", "yo", false);
 var event3 = new Event("bleh", "03/08/12", "12:00 AM", "fosho", true);
 var event4 = new Event("meh", "03/09/12", "3:00 PM", "when does the narwhal bacon?", true);
-var event5 = new Event("partywoooooo", "03/06/24", "12:00 PM", "at midnight!", true);
+var event5 = new Event("partywoooooooooooooo", "03/06/24", "12:00 PM", "at midnight!", true);
 var event6 = new Event("fosho", "05/16/12", "12:00 PM", "balhabldlaadjadadiasmcw", true);
 eventInfo1.push(event1);
 eventInfo1.push(event2);
@@ -48,15 +48,16 @@ function Bubble(x, y, event) {
 				context.closePath();
 				context.fill();
 				
-				// fill in tag
+				// fill in tag		
 				context.fillStyle = "rgba(255, 255, 255, 1)";
 				context.textBaseline = "middle";
 				context.textAlign = "center";
-				context.font = "12px arial, sans-serif";
-				context.fillText(this.event.name.substr(0,14), this.x, this.y);
+				context.font = "14px arial, sans-serif";
+				context.fillText(this.event.name.substr(0,15), this.x, this.y);
+				
 			}
 			else {
-				context.fillStyle = "rgba(0,100,180,0.5)";
+				context.fillStyle = "rgba(0,100,180,0.8)";
 				context.beginPath();			
 				context.arc(xmid, ymid, largeRad, 0, Math.PI*2, true);
 				context.closePath();
@@ -101,9 +102,20 @@ function mouseDown(e)
 		if ( withinBubble(bubble, x, y, interactiveMode) ) {
 			
 			bubble.enlarged = true;
-			redraw();
 		
 			enlargedBubble = bubble; // set our global enlarged ptr to this bubble for now
+			
+			// look for the enlargedBubble and splice it from array and then push it so it's last
+			// this is so the enlarged bubble will be drawn last and overshadow the other's text
+			for (var i = 0; i < currentBubbles.length; i++) {
+				if (currentBubbles[i].enlarged) {
+					currentBubbles.splice(i, 1);
+					break;
+				}
+			}
+			currentBubbles.push(bubble);
+				
+			redraw();
 		
 			interactiveMode = false;
 		}
@@ -112,11 +124,12 @@ function mouseDown(e)
 		var bubble = enlargedBubble; // grab our global
 		
 		if ( withinBubble(bubble, x, y, interactiveMode) ) {
-			// do nothing yet
+			// do nothing yet, interact with enlarged bubble in some way, add to events, or pop
 		}
 		else {
 		
 			bubble.enlarged = false;
+			
 			redraw();
 			
 			interactiveMode = true;
@@ -225,7 +238,6 @@ function setupByCategory(eventInfo, element) {
 			
 			for (var i = 0; i < eventInfo.length; i++) {
 			
-				alert(eventInfo[i].name);
 				do {
 					x = Math.random()*500 + 50;
 					y = Math.random()*650 + 50;
