@@ -2,10 +2,23 @@ var context;
 
 
 // global vars to hold data for events and bubbles across category
-var currentBubbles = new Array();
-var eventInfo = new Array();
+var currentBubbles;
+var eventInfo1 = new Array();
 
-
+// just set some preset events, although in reality this would draw from some database
+var event1 = new Event("github training", "03/06/12", "12:00 PM", "learn github so you can program more efficiently!", true);
+var event2 = new Event("blah", "03/07/12", "1:00 PM", "yo", false);
+var event3 = new Event("bleh", "03/08/12", "12:00 AM", "fosho", true);
+var event4 = new Event("meh", "03/09/12", "3:00 PM", "when does the narwhal bacon?", true);
+var event5 = new Event("partywoooooo", "03/06/24", "12:00 PM", "at midnight!", true);
+var event6 = new Event("fosho", "05/16/12", "12:00 PM", "balhabldlaadjadadiasmcw", true);
+eventInfo1.push(event1);
+eventInfo1.push(event2);
+eventInfo1.push(event3);
+eventInfo1.push(event4);
+eventInfo1.push(event5);
+eventInfo1.push(event6);
+			
 // global vars for interactivity mode and which bubble is enlarged for mouse click event handler
 var interactiveMode = true;
 var enlargedBubble;
@@ -17,9 +30,6 @@ var largeRad = 290;
 // coords for middle of canvas
 var xmid = 300;
 var ymid = 400;
-
-
-(document.getElementById( 'pForm' )).style.display = 'none';
 
 function Bubble(x, y, event) {
 	this.x = x;      // x coordinate
@@ -169,15 +179,32 @@ function redraw() {
 	}
 }
 		
-function setup() {
+function setup(category) {
 	var element = document.getElementById('canvas');
+	(document.getElementById( 'pForm' )).style.display = 'none';
 	
 	// event listeners for interaction
 	element.addEventListener('click', mouseDown, false);
 	//
 	
+	switch (category) {	
+		case "category1":
+			setupByCategory(eventInfo1, element);
+			break;
+		default: alert("error");
+	}
+}
+
+function setupByCategory(eventInfo, element) {
+	
 	if (element && element.getContext) {
 		var context = element.getContext('2d');
+		
+		// erase current canvas
+		context.clearRect(0, 0, element.width, element.height);
+		
+		// erase currentBubbles
+		currentBubbles = new Array();
 		
 		if (context) {
 		
@@ -186,25 +213,29 @@ function setup() {
 			var y;
 			var cont;
 			
-			do {
-				x = Math.random()*500 + 50;
-				y = Math.random()*650 + 50;
-				cont = true;
-				
-				for (i in currentBubbles) {
-					if (distBetweenPoints(x, y, currentBubbles[i].x, currentBubbles[i].y) < 70) {
-						cont= false;
-					}
-				}
-			} while (!cont);
-				
-			bubble = new Bubble(x, y)
-			bubble.draw(context);
+			for (var e in eventInfo) {
 			
-			currentBubbles.push(bubble);
+				do {
+					x = Math.random()*500 + 50;
+					y = Math.random()*650 + 50;
+					cont = true;
+				
+					for (i in currentBubbles) {
+						if (distBetweenPoints(x, y, currentBubbles[i].x, currentBubbles[i].y) < 70) {
+							cont= false;
+						}
+					}
+				} while (!cont);
+				
+				bubble = new Bubble(x, y, e)
+				bubble.draw(context);
+			
+				currentBubbles.push(bubble);
+			}
 		}
 	}
 }
+	
 
 function initprompt() {
 var pf = document.getElementById( 'pForm' );
