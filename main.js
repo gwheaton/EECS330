@@ -4,6 +4,7 @@ var context;
 // global vars to hold data for events and bubbles across category
 var currentBubbles;
 var eventInfo1 = new Array();
+var currentCategory;
 
 // just set some preset events, although in reality this would draw from some database
 var event1 = new Event("github training", "03/06/12", "12:00 PM", "learn github so you can program more efficiently!", true);
@@ -210,6 +211,8 @@ function setup(category) {
 	element.addEventListener('click', mouseDown, false);
 	//
 	
+	currentCategory = category;
+	
 	switch (category) {	
 		case "category1":
 			setupByCategory(eventInfo1, element);
@@ -296,7 +299,29 @@ function getPdata( arg ) {
 					break;
 				default: alert("error");
 		}
-
-		setup(category); // redraw window with new event
+		
+		if (category == currentCategory) { // draw new event to current window
+			var x; var y; var cont;
+			
+			do {
+					x = Math.random()*500 + 50;
+					y = Math.random()*650 + 50;
+					cont = true;
+				
+					for (j in currentBubbles) {
+						if (distBetweenPoints(x, y, currentBubbles[j].x, currentBubbles[j].y) < 70) {
+							cont= false;
+						}
+					}
+				} while (!cont);
+				
+			var bubble = new Bubble(x, y, newEvent);
+			
+			var element = document.getElementById('canvas');
+			var context = element.getContext('2d');
+			
+			bubble.draw(context);
+			currentBubbles.push(bubble);
+		}
 	}
 }
