@@ -47,6 +47,13 @@ function Bubble(x, y, event) {
 				context.arc(this.x, this.y, smallRad, 0, Math.PI*2, true);
 				context.closePath();
 				context.fill();
+				
+				// fill in tag
+				context.fillStyle = "rgba(255, 255, 255, 1)";
+				context.textBaseline = "middle";
+				context.textAlign = "center";
+				context.font = "12px arial, sans-serif";
+				context.fillText(this.event.name.substr(0,14), this.x, this.y);
 			}
 			else {
 				context.fillStyle = "rgba(0,100,180,0.5)";
@@ -54,6 +61,9 @@ function Bubble(x, y, event) {
 				context.arc(xmid, ymid, largeRad, 0, Math.PI*2, true);
 				context.closePath();
 				context.fill();
+				
+				// fill in the info for the event
+				
 			}
 			
 			context.restore();
@@ -213,21 +223,22 @@ function setupByCategory(eventInfo, element) {
 			var y;
 			var cont;
 			
-			for (var e in eventInfo) {
+			for (var i = 0; i < eventInfo.length; i++) {
 			
+				alert(eventInfo[i].name);
 				do {
 					x = Math.random()*500 + 50;
 					y = Math.random()*650 + 50;
 					cont = true;
 				
-					for (i in currentBubbles) {
-						if (distBetweenPoints(x, y, currentBubbles[i].x, currentBubbles[i].y) < 70) {
+					for (j in currentBubbles) {
+						if (distBetweenPoints(x, y, currentBubbles[j].x, currentBubbles[j].y) < 70) {
 							cont= false;
 						}
 					}
 				} while (!cont);
 				
-				bubble = new Bubble(x, y, e)
+				bubble = new Bubble(x, y, eventInfo[i]);
 				bubble.draw(context);
 			
 				currentBubbles.push(bubble);
