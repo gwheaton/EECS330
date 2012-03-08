@@ -10,8 +10,22 @@
 <div id="wrapper">
 <header>
     
-     <!-- logo -->
-    <img src="Stb_Logo.png" width="600" height="100" alt="Save the Bubble">
+	<!-- logo -->
+	<img src="Stb_Logo_nobg.png" height=100 width=auto alt="Save the Bubble">
+	<div id="hRight">
+		<img src="add event.png" alt="Add an Event" onclick="prompt()">
+			<form id="pForm">
+				Event: <input type="text" name="event" size="35" placeholder="Enter your event" /><br><br>
+				Date: <input type="text" name="date" maxlength="8" placeholder="##/##/##" /><br><br>
+				Time: <input type="text" name="time" maxlength="10" placeholder="ex: 12:00 P.M." /><br><br>
+				Description: <textarea name="script" rows="10" columns="300" placeholder="Enter a description of your event" id="description"></textarea><br><br>
+				Will food be provided?:<input type="checkbox" name="food" /> <br><br>
+			<input type="button" value="Submit" onclick="getPdata()" />
+			<input type="button" value="Cancel" onclick="initprompt()" />
+		</form>
+		<img src="my events.png" alt="My Events">
+		<div id="cannedLogin">George123 | <a href="">Sign Out</a></div>
+	</div>
 
 </header>
 
@@ -47,8 +61,8 @@
 
 <!-- HTML5 article tag -->    
 <article>
-    <div style="width:600px;height:800px;border:1px solid #000;">
-	<canvas id="canvas" height="800" width="600"></canvas>
+    <div style="width:1022px;height:500px;border:1px solid #000;">
+	<canvas id="canvas" height="500" width="1022"></canvas>
 	</div>
 </article>
 

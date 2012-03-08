@@ -1,8 +1,12 @@
 body {
-	background-color: #7aabab;
+	background-image: url(bg.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
 	font-family: Arial, Helvetica, sans-serif; 
-	font-size: 14px;
-	color: DimGrey;
+	font-size: 0.8em;
+	padding: 0px;
+	margin: 0px;
+	color: white;
 }
 
 #wrapper {
@@ -12,6 +16,35 @@ body {
 	margin: 0 auto;
 	
 }
+
+
+
+#hRight {
+	position: absolute;
+	height: 98px;
+	right: 0px;
+	top: 0px;
+}
+
+#hRight img {
+	margin: auto 10px;
+	position: relative;
+	top: 30px;
+}
+
+#cannedLogin {
+	float: right;
+	margin-left: 20px;
+	margin-right: 20px;
+	line-height: 100px;
+}
+
+#cannedLogin a {
+	font-weight: bold;
+	text-decoration: none;
+	color: #ff9933;
+}
+
 
 #description {
 	width: 400px;
@@ -27,9 +60,12 @@ border:2px solid blue;
 padding:8px;
 }
 
+
 header {
-	display: block;
-	left: 50%;
+	height: 100px;
+	width: 100%;
+	background-color: rgba(0,0,0,0.7);
+	position: relative;
 }
 
 footer {

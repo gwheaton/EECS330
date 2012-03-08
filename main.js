@@ -5,6 +5,8 @@ var currentBubbles;
 var currentCategory;
 var currentEventList;
 
+var abubble;
+
 var eventInfo1 = new Array();
 var myEvents = new Array();
 // just set some preset events, although in reality this would draw from some database
@@ -27,11 +29,11 @@ var enlargedBubble;
 
 // radius for bubbles
 var smallRad = 60;
-var largeRad = 290;
+var largeRad = 250;
 
 // coords for middle of canvas
-var xmid = 300;
-var ymid = 400;
+var xmid = 511;
+var ymid = 250;
 
 function Bubble(x, y, event) {
 	this.x = x;      // x coordinate
@@ -80,17 +82,15 @@ function Bubble(x, y, event) {
 				context.fillText(this.event.time.substr(0,15), xmid+120, ymid-150);
 				context.fillText("Description:", xmid, ymid-100);
 				context.fillText(this.event.descrip.substr(0,15), xmid, ymid-50);
-				context.fillText("Add to My Events", 210, 615);
-				context.fillText("Pop Bubble", 390, 615);
+				context.fillText("Add to My Events", 430, 415);
+				context.fillText("Pop Bubble", 600, 415);
 				if (this.event.food) {
-					context.fillText("*Food will be provided", xmid-100, ymid+150);
+					context.fillText("*Food will be provided", xmid-130, ymid+120);
 					}
 				var ctx = canvas.getContext('2d');
 				ctx.fillStyle= "rgba(0, 0, 0, .2)";
-				//ctx.strokeRect(150,600,120,30);  
-				//ctx.strokeRect(330,600,120,30);
-				ctx.fillRect(150,600,120,30);  
-				ctx.fillRect(330,600,120,30); 
+				ctx.fillRect(370,400,120,30);  
+				ctx.fillRect(550,400,120,30); 
 			}
 			else {
 				// popping animation
@@ -177,12 +177,12 @@ function mouseDown(e)
 		var bubble = enlargedBubble; // grab our global
 		
 		if ( withinBubble(bubble, x, y, interactiveMode) ) {
-			if ( y <= 630 && y >= 600 )  { // possibly within one of the two buttons
-				if ( x <= 270 && x >= 150 ) { // within add to events button
+			if ( y <= 430 && y >= 400 )  { // possibly within one of the two buttons
+				if ( x <= 490 && x >= 370 ) { // within add to events button
 					saveBubble(bubble);
 				}
-				else if ( x <= 450 && x >= 330) { // within pop button
-					popBubble(bubble);
+				else if ( x <= 770 && x >= 550) { // within pop button
+					popBubble(bubble, x, y);
 				}
 				else {
 					// do nothing
@@ -279,26 +279,24 @@ function saveBubble(bubble) {
 	interactiveMode = true;
 }
 
-function popBubble(bubble) {
+function popBubble(bubble, xc, yc) {
 	// animation
 	bubble.popped = true;
 	
 	var lilBubbles = new Array();
 	var lilBub; var x; var y; var vx; var vy; var size;
 	for ( var k = 0; k < 12; k++ ) {
-		x = xmid;
-		y = ymid;
-		vx = Math.random()*30 - 5;
-		vy = -(Math.random()*15 );
-		size =  Math.random()*25;
+		x = xc;
+		y = yc;
+		vx = Math.random()*20 - 5;
+		vy = -(Math.random()*8 );
+		size =  Math.random()*100;
 		lilBub = new LilBubble(x, y, vx, vy, size);
 		bubble.children.push(lilBub);
 	}
 	
-	//for (var l = 0; l < 25; l++) {
-	//	setTimeout(animateBubbles(bubble), 100);
-	//	sleep(100);
-	//}
+	abubble = bubble;
+	setInterval(animateBubbles, 40);
 	
 	// remove event from eventInfo
 	for (var i = 0; i < currentEventList.length; i++) {
@@ -308,31 +306,18 @@ function popBubble(bubble) {
 		}
 	}
 	
-	// remove bubble from currentBubbles
-	for (var j = 0; i < currentBubbles.length; j++) {
-		if (currentBubbles[j].enlarged) {
-			currentBubbles.splice(j, 1);
-			break;
-		}
-	}
-	
 	// return to interactiveMode
 	redraw();
 	interactiveMode = true;
 }
 
-function sleep(delay) {
-	var start = new Date().getTime();
-	while (new Date().getTime() < start + delay);
-}
-		
-function animateBubbles(bubble) {
-	for (var j = 0; j < bubble.children.length ; j++) {
-		bubble.children[j].x += bubble.children[j].vx;
-		bubble.children[j].y += bubble.children[j].vy;
-		bubble.children[j].vx /= 1.05;
-		bubble.children[j].vy += 0.5;
-		bubble.children[j].size /= 1.2;
+function animateBubbles() {
+	for (var j = 0; j < abubble.children.length ; j++) {
+		abubble.children[j].x += abubble.children[j].vx;
+		abubble.children[j].y += abubble.children[j].vy;
+		abubble.children[j].vx /= 1.05;
+		abubble.children[j].vy += 0.5;
+		abubble.children[j].size /= 1.05;
 	}
 	redraw();
 }
@@ -394,8 +379,8 @@ function setupByCategory(eventInfo, element) {
 			for (var i = 0; i < eventInfo.length; i++) {
 			
 				do {
-					x = Math.random()*500 + 50;
-					y = Math.random()*650 + 50;
+					x = Math.random()*900 + 50;
+					y = Math.random()*400 + 50;
 					cont = true;
 				
 					for (j in currentBubbles) {
@@ -456,8 +441,8 @@ function getPdata( arg ) {
 			var x; var y; var cont;
 			
 			do {
-					x = Math.random()*500 + 50;
-					y = Math.random()*650 + 50;
+					x = Math.random()*900 + 50;
+					y = Math.random()*400 + 50;
 					cont = true;
 				
 					for (j in currentBubbles) {
