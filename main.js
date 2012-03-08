@@ -2,9 +2,11 @@ var context;
 
 // global vars to hold data for events and bubbles across category
 var currentBubbles;
-var eventInfo1 = new Array();
 var currentCategory;
+var currentEventList;
 
+var eventInfo1 = new Array();
+var myEvents = new Array();
 // just set some preset events, although in reality this would draw from some database
 var event1 = new Event("github training", "03/06/12", "12:00 PM", "learn github so you can program more efficiently!", true);
 var event2 = new Event("blah", "03/07/12", "1:00 PM", "yo", false);
@@ -146,7 +148,17 @@ function mouseDown(e)
 		var bubble = enlargedBubble; // grab our global
 		
 		if ( withinBubble(bubble, x, y, interactiveMode) ) {
-			// do nothing yet, interact with enlarged bubble in some way, add to events, or pop
+			if ( y <= 630 && y >= 600 )  { // possibly within one of the two buttons
+				if ( x <= 270 && x >= 150 ) { // within add to events button
+					saveBubble(bubble);
+				}
+				else if ( x <= 450 && x >= 330) { // within pop button
+					popBubble(bubble);
+				}
+				else {
+					// do nothing
+				}
+			}
 		}
 		else {
 		
@@ -211,6 +223,57 @@ function distBetweenPoints(x1, y1, x2, y2)
 	return Math.sqrt( x + y );
 }
 
+function saveBubble(bubble) {
+	// animation
+	
+	// add event to event list for My Events
+	myEvents.push(bubble.event);
+	
+	// remove event from eventInfo
+	for (var i = 0; i < currentEventList.length; i++) {
+		if (currentEventList[i] == bubble.event) {
+			currentEventList.splice(i, 1);
+			break;
+		}
+	}
+	
+	// remove bubble from currentBubbles
+	for (var j = 0; i < currentBubbles.length; j++) {
+		if (currentBubbles[j].enlarged) {
+			currentBubbles.splice(j, 1);
+			break;
+		}
+	}
+			
+	// return to interactiveMode
+	redraw();
+	interactiveMode = true;
+}
+
+function popBubble(bubble) {
+	// animation
+	
+	// remove event from eventInfo
+	for (var i = 0; i < currentEventList.length; i++) {
+		if (currentEventList[i] == bubble.event) {
+			currentEventList.splice(i, 1);
+			break;
+		}
+	}
+	
+	// remove bubble from currentBubbles
+	for (var i = 0; i < currentBubbles.length; i++) {
+		if (currentBubbles[i].enlarged) {
+			currentBubbles.splice(i, 1);
+			break;
+		}
+	}
+	
+	// return to interactiveMode
+	redraw();
+	interactiveMode = true;
+}
+
 function redraw() {
 // redraw the canvas bubbles
 
@@ -236,7 +299,12 @@ function setup(category) {
 	
 	switch (category) {	
 		case "category1":
+			currentEventList = eventInfo1;
 			setupByCategory(eventInfo1, element);
+			break;
+		case "myEvents":
+			currentEventList = myEvents;
+			setupByCategory(myEvents, element);
 			break;
 		default: alert("error");
 	}
