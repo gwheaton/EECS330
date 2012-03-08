@@ -39,11 +39,14 @@ function Bubble(x, y, event) {
 	this.enlarged = false;
 	this.event = event; // event class to store all event info for this bubble
 	
+	this.popped = false; // for popping animation
+	this.children = new Array(); // little bubbles for poppping animation to be updated
+	
 	this.draw = function(context) {		
 		
 			context.save();
 			
-			if (!this.enlarged) {
+			if (!this.enlarged && !this.popped) {
 				context.fillStyle = "rgba(0,100,180,0.5)";
 				context.beginPath();			
 				context.arc(this.x, this.y, smallRad, 0, Math.PI*2, true);
@@ -58,7 +61,7 @@ function Bubble(x, y, event) {
 				context.fillText(this.event.name.substr(0,15), this.x, this.y);
 				
 			}
-			else {
+			else if (this.enlarged && !this.popped) {
 				context.fillStyle = "rgba(0,100,180,.9)";
 				context.beginPath();			
 				context.arc(xmid, ymid, largeRad, 0, Math.PI*2, true);
@@ -89,10 +92,36 @@ function Bubble(x, y, event) {
 				ctx.fillRect(150,600,120,30);  
 				ctx.fillRect(330,600,120,30); 
 			}
+			else {
+				// popping animation
+				// don't draw big bubble, just its children as they are updated repeatedly
+				for (var i = 0; i < this.children.length ; i++) {
+					this.children[i].draw(context);
+				}
+			}
 			
 			context.restore();
 	}
 }
+
+function LilBubble(x, y, vx, vy, size) {
+	this.x = x;
+	this.y = y;
+	this.vx = vx;
+	this.vy = vy;
+	this.size = size;
+	
+	this.draw = function(context) {
+		context.save();
+		context.fillStyle = "rgba(0,100,170,0.4)";
+		context.beginPath();			
+		context.arc(this.x, this.y, this.size, 0, Math.PI*2, true);
+		context.closePath();
+		context.fill();
+		context.restore();
+	}
+}
+		
 
 function Event(name, date, time, descrip, food) {
 	this.name = name; //  string
@@ -176,7 +205,7 @@ function getClosestBubble(x, y)
 {
 	var mindist = 9000; var dist; var retBubble;
 	
-	for (var i in currentBubbles) {
+	for (var i = 0; i < currentBubbles.length ; i++) {
 		dist = distBetweenPoints(x, y, currentBubbles[i].x, currentBubbles[i].y);
 		
 		if (dist < mindist) {
@@ -252,6 +281,24 @@ function saveBubble(bubble) {
 
 function popBubble(bubble) {
 	// animation
+	bubble.popped = true;
+	
+	var lilBubbles = new Array();
+	var lilBub; var x; var y; var vx; var vy; var size;
+	for ( var k = 0; k < 12; k++ ) {
+		x = xmid;
+		y = ymid;
+		vx = Math.random()*30 - 5;
+		vy = -(Math.random()*15 );
+		size =  Math.random()*25;
+		lilBub = new LilBubble(x, y, vx, vy, size);
+		bubble.children.push(lilBub);
+	}
+	
+	//for (var l = 0; l < 25; l++) {
+	//	setTimeout(animateBubbles(bubble), 100);
+	//	sleep(100);
+	//}
 	
 	// remove event from eventInfo
 	for (var i = 0; i < currentEventList.length; i++) {
@@ -262,9 +309,9 @@ function popBubble(bubble) {
 	}
 	
 	// remove bubble from currentBubbles
-	for (var i = 0; i < currentBubbles.length; i++) {
-		if (currentBubbles[i].enlarged) {
-			currentBubbles.splice(i, 1);
+	for (var j = 0; i < currentBubbles.length; j++) {
+		if (currentBubbles[j].enlarged) {
+			currentBubbles.splice(j, 1);
 			break;
 		}
 	}
@@ -272,6 +319,22 @@ function popBubble(bubble) {
 	// return to interactiveMode
 	redraw();
 	interactiveMode = true;
+}
+
+function sleep(delay) {
+	var start = new Date().getTime();
+	while (new Date().getTime() < start + delay);
+}
+		
+function animateBubbles(bubble) {
+	for (var j = 0; j < bubble.children.length ; j++) {
+		bubble.children[j].x += bubble.children[j].vx;
+		bubble.children[j].y += bubble.children[j].vy;
+		bubble.children[j].vx /= 1.05;
+		bubble.children[j].vy += 0.5;
+		bubble.children[j].size /= 1.2;
+	}
+	redraw();
 }
 
 function redraw() {
@@ -282,7 +345,7 @@ function redraw() {
 	
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	
-	for (var i in currentBubbles) {
+	for (var i = 0; i < currentBubbles.length; i++) {
 		currentBubbles[i].draw(context);
 	}
 }
