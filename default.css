@@ -24,13 +24,16 @@ header {
 	height: 100px;
 	width: 100%;
 	background-color: rgba(0,0,0,0.7);
+	-moz-box-shadow: 0px 10px 5px rgba(0,0,0,0.25);
+	-webkit-box-shadow: 0px 10px 5px rgba(0,0,0,0.25);
+	box-shadow: 0px 10px 5px rgba(0,0,0,0.25);
 }
 
 nav {
 	float: right;
 	position: relative;
 	height: auto;
-	width: 600px;
+	width: 530px;
 	margin: auto;
 }
 
@@ -51,7 +54,6 @@ nav li {
 
 #dd {
 	width: 350px;
-	font-weight: bold;
 	text-shadow: 1px 1px rgba(0,0,0,1);
 }
 
@@ -60,6 +62,7 @@ nav li img {
 	margin-left: 10px;
 	margin-right: 10px;
 }
+
 
 #description {
 	width: 338px;
@@ -90,10 +93,18 @@ nav li img {
 	color: #ff9933;
 }
 
+#cannedLogin a:hover, a:active {
+	color: white;
+}
+	
 
 footer {
-	display: block;
 	clear: both;
 	text-align: center;
 	padding: 12px;
+}
+
+footer ul {
+	list-style-type: none;
+	display: inline-block;
 }

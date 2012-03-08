@@ -255,8 +255,8 @@ function mouseDown(e)
 				
 			redraw();
 		
-			interactiveMode = false;
 		}
+		interactiveMode = false;
 	}
 	else { // we have an enlarged bubble, if we click outside it return it to normal and reenter interactive mode
 		var bubble = enlargedBubble; // grab our global
@@ -338,7 +338,6 @@ function distBetweenPoints(x1, y1, x2, y2)
 }
 
 function saveBubble(bubble) {
-	// animation
 	
 	// add event to event list for My Events
 	myEvents.push(bubble.event);
@@ -387,6 +386,18 @@ function popBubble(bubble, xc, yc) {
 	for (var i = 0; i < currentEventList.length; i++) {
 		if (currentEventList[i] == bubble.event) {
 			currentEventList.splice(i, 1);
+			break;
+		}
+	}
+	
+	for (var i = 0; i < 500; i++) {}
+	
+	clearInterval();
+	
+	// remove bubble from currentBubbles
+	for (var j = 0; i < currentBubbles.length; j++) {
+		if (currentBubbles[j].enlarged) {
+			currentBubbles.splice(j, 1);
 			break;
 		}
 	}
@@ -525,7 +536,16 @@ function getPdata( arg ) {
 		var t = f.time.value;
 		var d = f.script.value;
 		var food = f.food.checked;
-		var category = "category1"; // need to fix this
+		
+		var category = "";
+		for (var i = 0; i < f.category.length; i++) {
+			if (f.category[i].checked) {
+				category = f.category[i].value;
+			}
+		}
+		if (category == "") {
+			alert('Please choose a category for the event.');
+		}
 		
 		f.style.display = 'none';	// hide form
 
