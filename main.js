@@ -1,6 +1,5 @@
 var context;
 
-
 // global vars to hold data for events and bubbles across category
 var currentBubbles;
 var eventInfo1 = new Array();
@@ -50,7 +49,7 @@ function Bubble(x, y, event) {
 				context.fill();
 				
 				// fill in tag		
-				context.fillStyle = "rgba(255, 255, 255, 1)";
+				context.fillStyle = "rgba(255, 255, 255, .9)";
 				context.textBaseline = "middle";
 				context.textAlign = "center";
 				context.font = "14px arial, sans-serif";
@@ -58,7 +57,7 @@ function Bubble(x, y, event) {
 				
 			}
 			else {
-				context.fillStyle = "rgba(0,100,180,1)";
+				context.fillStyle = "rgba(0,100,180,.9)";
 				context.beginPath();			
 				context.arc(xmid, ymid, largeRad, 0, Math.PI*2, true);
 				context.closePath();
@@ -76,10 +75,17 @@ function Bubble(x, y, event) {
 				context.fillText(this.event.time.substr(0,15), xmid+120, ymid-150);
 				context.fillText("Description:", xmid, ymid-100);
 				context.fillText(this.event.descrip.substr(0,15), xmid, ymid-50);
+				context.fillText("Add to My Events", 210, 615);
+				context.fillText("Pop Bubble", 390, 615);
 				if (this.event.food) {
 					context.fillText("*Food will be provided", xmid-100, ymid+150);
 					}
-				
+				var ctx = canvas.getContext('2d');
+				ctx.fillStyle= "rgba(0, 0, 0, .2)";
+				//ctx.strokeRect(150,600,120,30);  
+				//ctx.strokeRect(330,600,120,30);
+				ctx.fillRect(150,600,120,30);  
+				ctx.fillRect(330,600,120,30); 
 			}
 			
 			context.restore();
@@ -93,6 +99,7 @@ function Event(name, date, time, descrip, food) {
 	this.descrip = descrip; // string
 	this.food = food; // true or false
 }
+
 
 	
 function mouseDown(e)

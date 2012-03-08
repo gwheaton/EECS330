@@ -45,12 +45,12 @@ nav {
 	display: block;
 	float: right;
 	position: relative;
-	width: 180px;
+	width: 420px;
 }
 
 article {
 	float: left;
-	width: 800px;
+	width: 600px;
 }
 
 li {
