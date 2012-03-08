@@ -3,72 +3,57 @@
 <head>
 	<title>Save the Bubble!</title>
 	<link rel="stylesheet" href="default.css">
-	<script type="text/javascript" src="main.js"></script>	
+	<script type="text/javascript" src="main.js"></script>
 </head>
 
 <body onLoad="initprompt();">
-<div id="wrapper">
 <header>
-    
 	<!-- logo -->
 	<img src="Stb_Logo_nobg.png" height=100 width=auto alt="Save the Bubble">
-	<div id="hRight">
-		<img src="add event.png" alt="Add an Event" onclick="prompt()">
-			<!-- <form id="pForm">
-				Event: <input type="text" name="event" size="35" placeholder="Enter your event" /><br><br>
-				Date: <input type="text" name="date" maxlength="8" placeholder="##/##/##" /><br><br>
-				Time: <input type="text" name="time" maxlength="10" placeholder="ex: 12:00 P.M." /><br><br>
-				Description: <textarea name="script" rows="10" columns="300" placeholder="Enter a description of your event" id="description"></textarea><br><br>
-				Will food be provided?:<input type="checkbox" name="food" /> <br><br>
-			<input type="button" value="Submit" onclick="getPdata()" />
-			<input type="button" value="Cancel" onclick="initprompt()" />
-		</form> -->
-		<img src="my events.png" alt="My Events">
-		<div id="cannedLogin">George123 | <a href="">Sign Out</a></div>
-	</div>
-
+	<!-- Nav links -->
+	<nav>
+		<ul>
+			<li><img src="my events.png" alt="My Events" onclick="setup('myEvents');"></li>
+			<li id="dd">
+				<img src="add event.png" alt="Add an Event" onclick="prompt()">
+				<div id="cannedLogin">George123 | <a href="">Sign Out</a></div>
+				<form id="pForm"></br></br>
+					<div id="add">
+					Event Name: </br><input type="text" name="event" size="35" placeholder="Enter your event" /><br><br>
+					Date: </br><input type="text" name="date" maxlength="8" placeholder="##/##/##" /><br><br>
+					Time: </br><input type="text" name="time" maxlength="10" placeholder="ex: 12:00 P.M." /><br><br>
+					Category: <br>
+					<input type="radio" name="category" value="Academics"> Academics <br>
+					<input type="radio" name="category" value="Athletics"> Athletics <br>
+					<input type="radio" name="category" value="Music"> Music <br>
+					<input type="radio" name="category" value="Theater"> Theater <br>
+					<input type="radio" name="category" value="Miscellaneous"> Miscellaneous <br><br>
+					Description: </br><textarea name="script" rows="10" columns="400" placeholder="Enter a description of your event (250 characters or less)" maxlength="250" id="description"></textarea><br><br>
+					Will food be provided?:<input type="checkbox" name="food" /> <br><br>
+					<input type="button" value="Submit" onclick="getPdata()" />
+					<input type="button" value="Cancel" onclick="initprompt()" />
+					</div>
+				</form>
+			</li>
+		</ul>
+	</nav>
 </header>
 
 
-<!-- left nav items -->
-<nav>
-    <!-- UL stands for unordered list -->
-    <ul>
-	<button type="button" onclick="setup('category1');">Category1</button>
-	<button type= "button" onclick="setup('myEvents');">My Events</button>
-	<form>
-		<input type="button" value="Add a Bubble" onclick="prompt()" />
-	</form>
-		<form id="pForm">
-		Event: <input type="text" name="event" size="35" placeholder="Enter your event" /><br><br>
-		Date: <input type="text" name="date" maxlength="8" placeholder="##/##/##" /><br><br>
-		Time: <input type="text" name="time" maxlength="10" placeholder="ex: 12:00 P.M." /><br><br>
-		Category: <br>
-		<input type="radio" name="category" value="Academics"> Academics <br>
-		<input type="radio" name="category" value="Athletics"> Athletics<br>
-		<input type="radio" name="category" value="Music"> Music<br>
-		<input type="radio" name="category" value="Theater"> Theater<br>
-		<input type="radio" name="category" value="Miscellaneous"> Miscellaneous<br><br>	
-		Description: <textarea name="script" rows="10" columns="300" placeholder="Enter a description of your event (250 characters or less)" maxlength="250" id="description"></textarea><br><br>
-		Will food be provided?:<input type="checkbox" name="food" /> <br><br>
-		<input type="button" value="Submit" onclick="getPdata()" />
-		<input type="button" value="Cancel" onclick="initprompt()" />
-		</form>
-    </ul>
-	
-</nav>
-
-
-<!-- HTML5 article tag -->    
 <article>
-    <div style="width:1022px;height:500px;border:1px solid #000;">
+	<div style="width:1022px;height:500px;border:1px solid #000; margin:30px auto 0px auto;">
 	<canvas id="canvas" height="500" width="1022"></canvas>
 	</div>
 </article>
 
+<footer>
+	<ul>
 
-
-</div>
+	<button type="button" onclick="setup('category1');">Click Me!</button>
+	<form>
+	</ul>
+	&#169 Team George
+</footer>	
 
 </body>
 </html>
