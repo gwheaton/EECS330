@@ -8,21 +8,102 @@ var currentEventList;
 var abubble;
 
 var eventInfo1 = new Array();
+var eventInfo2 = new Array();
+var eventInfo3 = new Array();
+var eventInfo4 = new Array();
+var eventInfo5 = new Array();
 var myEvents = new Array();
 // just set some preset events, although in reality this would draw from some database
-var event1 = new Event("github training", "03/06/12", "12:00 PM", "learn github so you can program more efficiently!", true);
-var event2 = new Event("blah", "03/07/12", "1:00 PM", "yo", false);
-var event3 = new Event("bleh", "03/08/12", "12:00 AM", "fosho", true);
-var event4 = new Event("meh", "03/09/12", "3:00 PM", "when does the narwhal bacon?", true);
-var event5 = new Event("partywoooooooooooooo", "03/06/24", "12:00 PM", "at midnight!", true);
-var event6 = new Event("fosho", "05/16/12", "12:00 PM", "balhabldlaadjadadiasmcw", true);
+var event1 = new Event("github training", "03/06/12", "12:00 PM", "learn github so you can program more efficiently! @ tech m234213 ", false);
+var event2 = new Event("EECS 330 Study", "03/07/12", "1:00 PM", "Come study for the EECS 330 final with us! Free food! =/ MAIN LIBS ROOM 5", true);
+var event3 = new Event("chess club meeting", "03/08/12", "12:00 AM", "Informational meeting about the best and coolest team at Northwestern, Tech LR4", false);
+var event4 = new Event("Design Comp", "03/09/12", "3:00 PM", "when does the narwhal bacon?", true);
+var event5 = new Event("Math Tutoring", "03/06/24", "12:00 PM", "I can teach you all the things! @Your House", true);
+var event6 = new Event("Engineering Stuffs", "05/16/12", "12:00 PM", "Build robots, drink milk, get women @ Ford ITW-3450", true);
+var event7 = new Event("SPG Improv Workshop", "07/10/25", "3:30 AM", "I don't really know what this event is since I stole it from Plan-it-purple", false);
+var event8 = new Event("Indoor Writing", "10/14/90", "5:00 AM", "Finish your essays here, it's indoors, safe, and fun. Snacks included, LOCATION: indoors, why did the makers of this site forget this?", true);
 eventInfo1.push(event1);
 eventInfo1.push(event2);
 eventInfo1.push(event3);
 eventInfo1.push(event4);
 eventInfo1.push(event5);
 eventInfo1.push(event6);
-			
+eventInfo1.push(event7);
+eventInfo1.push(event8);
+
+var event9 = new Event("Lax Bros", "03/06/12", "12:00 PM", "Lax it up with us dude!", false);
+var event10 = new Event("1v1 basketball", "03/06/12", "12:00 PM", "Bobb courts, see you there", false);
+var event11 = new Event("Running in place", "03/06/12", "12:00 PM", "location: wherever you are", false);
+var event12 = new Event("Standing up", "03/06/12", "12:00 PM", "Pretty much self explanatory", false);
+var event13 = new Event("Frisbee", "03/06/12", "12:00 PM", "Come to Long Field and play with us!", false);
+var event14 = new Event("football", "03/06/12", "12:00 PM", "Ryan Field, be there", false);
+var event15 = new Event("Mud wrestlin", "03/06/12", "12:00 PM", "A b c d e f g h i j k l m n o p q r s t u  v w x y z", false);
+var event16 = new Event("Touch Soccer", "03/06/12", "12:00 PM", "Soccer but more safe", false);
+var event17 = new Event("volleyball", "03/06/12", "12:00 PM", "Northwestern beaches", false);
+var event18 = new Event("Freeze tag", "03/06/12", "12:00 PM", "Tag but with freezing", false);
+eventInfo2.push(event9);
+eventInfo2.push(event10);
+eventInfo2.push(event11);
+eventInfo2.push(event12);
+eventInfo2.push(event13);
+eventInfo2.push(event14);
+eventInfo2.push(event15);
+eventInfo2.push(event16);
+eventInfo2.push(event17);
+eventInfo2.push(event18);
+
+var event19 = new Event("Band", "03/06/12", "12:00 AM", "generic description goes here", false);
+var event20 = new Event("Guitar lessons", "03/06/12", "12:00 AM", "generic description goes here", false);
+var event21 = new Event("banjo duel", "03/06/12", "12:00 AM", "generic description goes here", false);
+var event22 = new Event("double bass", "03/06/12", "12:00 AM", "generic description goes here", false);
+var event23 = new Event("concert", "03/06/12", "12:00 AM", "generic description goes here", true);
+var event24 = new Event("the flute and you", "03/06/12", "12:00 AM", "generic description goes here", false);
+var event25 = new Event("acoustics", "03/06/12", "12:00 AM", "generic description goes here", false);
+var event26 = new Event("guitar hero", "03/06/12", "12:00 AM", "generic description goes here", false);
+eventInfo3.push(event19);
+eventInfo3.push(event20);
+eventInfo3.push(event21);
+eventInfo3.push(event22);
+eventInfo3.push(event23);
+eventInfo3.push(event24);
+eventInfo3.push(event25);
+eventInfo3.push(event26);
+
+var event27 = new Event("Marley & You", "03/06/12", "12:00 AM", "generic description goes here", false);
+var event28 = new Event("Rush Hour 4", "03/06/12", "12:00 AM", "generic description goes here", false);
+var event29 = new Event("Da Ali G Show", "03/06/12", "12:00 AM", "generic description goes here", false);
+var event30 = new Event("Wicked", "03/06/12", "12:00 AM", "generic description goes here", false);
+var event31 = new Event("Ballet", "03/06/12", "12:00 AM", "generic description goes here", false);
+eventInfo4.push(event27);
+eventInfo4.push(event28);
+eventInfo4.push(event29);
+eventInfo4.push(event30);
+eventInfo4.push(event31);
+
+var event32 = new Event("Ham Social", "03/06/12", "12:00 AM", "BYOH....all kinds of ham!", false);
+var event33 = new Event("Muppeteering", "03/06/12", "12:00 AM", "generic description goes here", false);
+var event34 = new Event("Free food", "03/06/12", "12:00 AM", "generic description goes here", true);
+var event35 = new Event("Forging checks", "03/06/12", "12:00 AM", "generic description goes here", false);
+var event36 = new Event("Pokemon party", "03/06/12", "12:00 AM", "generic description goes here", false);
+var event37 = new Event("Bieberfest", "03/06/12", "12:00 AM", "generic description goes here", false);
+var event38 = new Event("bowtying", "03/06/12", "12:00 AM", "generic description goes here", false);
+var event39 = new Event("Star Trek Convention", "03/06/12", "12:00 AM", "generic description goes here", false);
+var event40 = new Event("shirt swap", "03/06/12", "12:00 AM", "generic description goes here", false);
+var event41 = new Event("canadian tuxedos", "03/06/12", "12:00 AM", "bring your jeans", false);
+var event42 = new Event("Halo Bro", "03/06/12", "12:00 AM", "brooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo", false);
+eventInfo5.push(event32);
+eventInfo5.push(event33);
+eventInfo5.push(event34);
+eventInfo5.push(event35);
+eventInfo5.push(event36);
+eventInfo5.push(event37);
+eventInfo5.push(event38);
+eventInfo5.push(event39);
+eventInfo5.push(event40);
+eventInfo5.push(event41);
+eventInfo5.push(event42);
+
+
 // global vars for interactivity mode and which bubble is enlarged for mouse click event handler
 var interactiveMode = true;
 var enlargedBubble;
@@ -75,13 +156,17 @@ function Bubble(x, y, event) {
 				context.textBaseline = "middle";
 				context.textAlign = "center";
 				context.font = "14px arial, sans-serif";
-				context.fillText(this.event.name.substr(0,15), xmid, ymid-200);
+				context.fillText(this.event.name.substring(0,15), xmid, ymid-200);
 				context.fillText("Date:", xmid-120, ymid-150);
-				context.fillText(this.event.date.substr(0,15), xmid-50, ymid-150);
+				context.fillText(this.event.date.substring(0,15), xmid-50, ymid-150);
 				context.fillText("Time:", xmid+50, ymid-150);
-				context.fillText(this.event.time.substr(0,15), xmid+120, ymid-150);
+				context.fillText(this.event.time.substring(0,15), xmid+120, ymid-150);
 				context.fillText("Description:", xmid, ymid-100);
-				context.fillText(this.event.descrip.substr(0,15), xmid, ymid-50);
+				context.fillText(this.event.descrip.substring(0,50), xmid, ymid-50);
+				context.fillText(this.event.descrip.substring(50,100), xmid, ymid-25);
+				context.fillText(this.event.descrip.substring(100,150), xmid, ymid);
+				context.fillText(this.event.descrip.substring(150,200), xmid, ymid+25);
+				context.fillText(this.event.descrip.substring(200,250), xmid, ymid+50);
 				context.fillText("Add to My Events", 430, 415);
 				context.fillText("Pop Bubble", 610, 415);
 				if (this.event.food) {
@@ -346,13 +431,29 @@ function setup(category) {
 	currentCategory = category;
 	
 	switch (category) {	
-		case "category1":
-			currentEventList = eventInfo1;
-			setupByCategory(eventInfo1, element);
-			break;
 		case "myEvents":
 			currentEventList = myEvents;
 			setupByCategory(myEvents, element);
+			break;
+		case "academics":
+			currentEventList = eventInfo1;
+			setupByCategory(eventInfo1, element);
+			break;
+		case "athletics":
+			currentEventList = eventInfo2;
+			setupByCategory(eventInfo2, element);
+			break;
+		case "music":
+			currentEventList = eventInfo3;
+			setupByCategory(eventInfo3, element);
+			break;
+		case "theatre":
+			currentEventList = eventInfo4;
+			setupByCategory(eventInfo4, element);
+			break;
+		case "miscellaneous":
+			currentEventList = eventInfo5;
+			setupByCategory(eventInfo5, element);
 			break;
 		default: alert("error");
 	}
@@ -431,8 +532,20 @@ function getPdata( arg ) {
 		var newEvent = new Event(n, a, t, d, food);
 		// use category selected to put into a category's event list
 		switch (category) {	
-				case "category1":
+				case "academics":
 					eventInfo1.push(newEvent);
+					break;
+				case "athletics":
+					eventInfo2.push(newEvent);
+					break;
+				case "music":
+					eventInfo3.push(newEvent);
+					break;
+				case "theatre":
+					eventInfo4.push(newEvent);
+					break;
+				case "miscellaneous":
+					eventInfo5.push(newEvent);
 					break;
 				default: alert("error");
 		}
