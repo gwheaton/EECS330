@@ -75,16 +75,17 @@ function Bubble(x, y, event) {
 				context.textBaseline = "middle";
 				context.textAlign = "center";
 				context.font = "14px arial, sans-serif";
-				context.fillText(this.event.name.substr(0,30), xmid, ymid-200);
+				context.fillText(this.event.name.substring(0,30), xmid, ymid-200);
 				context.fillText("Date:", xmid-120, ymid-150);
-				context.fillText(this.event.date.substr(0,15), xmid-50, ymid-150);
+				context.fillText(this.event.date.substring(0,15), xmid-50, ymid-150);
 				context.fillText("Time:", xmid+50, ymid-150);
 				context.fillText(this.event.time.substr(0,15), xmid+120, ymid-150);
 				context.fillText("Description:", xmid, ymid-100);
-				context.fillText(this.event.descrip.substr(0,40), xmid, ymid-50);
-				context.fillText(this.event.descrip.substr(40,80), xmid, ymid-25);
-				context.fillText(this.event.descrip.substr(80,120), xmid, ymid);
-				context.fillText(this.event.descrip.substr(120,160), xmid, ymid+25);
+				context.fillText(this.event.descrip.substring(0,50), xmid, ymid-50);
+				context.fillText(this.event.descrip.substring(50,100), xmid, ymid-25);
+				context.fillText(this.event.descrip.substring(100,150), xmid, ymid);
+				context.fillText(this.event.descrip.substring(150,200), xmid, ymid+25);
+				context.fillText(this.event.descrip.substring(200,251), xmid, ymid+50);
 				context.fillText("Add to My Events", 430, 415);
 				context.fillText("Pop Bubble", 600, 415);
 				if (this.event.food) {
